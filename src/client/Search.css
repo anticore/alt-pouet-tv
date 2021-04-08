@@ -1,0 +1,26 @@
+.selects {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+select {
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.box {
+    max-width: 40vw;
+    padding: 2rem;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,22 @@
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.box {
+    padding: 2rem;
+    max-width: none;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yt {
+    width: 640px;
+    height: auto;
+}

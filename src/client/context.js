@@ -13,8 +13,9 @@ export const Provider = ({ children }) => {
     function getRandomProd(options) {
         let types = options.types && options.types.join(",");
         let platforms = options.platforms && options.platforms.join(",");
+        let minimumOfCdc = options.minimumOfCdc || 0;
 
-        const params = new URLSearchParams({ types, platforms });
+        const params = new URLSearchParams({ types, platforms, minimumOfCdc });
 
         console.log(params.toString());
 

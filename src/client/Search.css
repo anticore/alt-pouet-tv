@@ -24,3 +24,7 @@ select {
     align-items: center;
     justify-content: center;
 }
+
+.additional-fields {
+    margin-left: 1rem;
+}

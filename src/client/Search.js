@@ -7,6 +7,7 @@ const Search = () => {
     const context = useContext(Context);
     const [selectedTypes, setSelectedTypes] = useState([]);
     const [selectedPlatforms, setSelectedPlatforms] = useState([]);
+    const [minimumOfCdc, setMinimumOfCdc] = useState(0);
 
     function onTypesChange(event) {
         let index = selectedTypes.indexOf(event.target.value);
@@ -32,10 +33,17 @@ const Search = () => {
         }
     }
 
+    function onMinimumOfCdcChange(event) {
+        let value = event.target.value;
+        if (value < 0) value = 0;
+        setMinimumOfCdc(value);
+    }
+
     function onStart() {
         context.getRandomProd({
             types: selectedTypes,
             platforms: selectedPlatforms,
+            minimumOfCdc,
         });
     }
 
@@ -77,6 +85,21 @@ const Search = () => {
                                 ))}
                             </select>
                         </div>
+
+                        <div className="additional-fields">
+                            <div className="field">
+                                <label className="label">Minimum of CDCs</label>
+                                <div className="control">
+                                    <input
+                                        className="input"
+                                        type="number"
+                                        placeholder="0"
+                                        value={minimumOfCdc}
+                                        onChange={onMinimumOfCdcChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="buttons">
@@ -84,7 +107,7 @@ const Search = () => {
                             className="button is-primary is-medium is-fullwidth"
                             onClick={onStart}
                         >
-                            start
+                            Start
                         </button>
                     </div>
                 </div>

@@ -20,23 +20,28 @@ low(adapter)
         app.get("/random", (req, res) => {
             let types = req.query.types.split(",");
             let platforms = req.query.platforms.split(",");
+            let minimumOfCdc = req.query.minimumOfCdc;
+
             const prod = db
                 .get("prods")
                 .filter((prod) => {
                     let prodPlatforms = Object.values(prod.platforms).map(
                         (p) => p.slug
                     );
+
                     let hasYoutube =
                         prod.downloadLinks.length > 0 &&
                         prod.downloadLinks.some((dlLink) =>
                             dlLink.link.includes("youtube")
                         );
-                    //console.log(hasYoutube);
+
+                    let hasMinimumOfCdc = prod.cdc >= minimumOfCdc;
 
                     return (
                         types.some((t) => prod.types.includes(t)) &&
                         platforms.some((p) => prodPlatforms.includes(p)) &&
-                        hasYoutube
+                        hasYoutube &&
+                        hasMinimumOfCdc
                     );
                 })
                 .sample()
